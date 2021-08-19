@@ -15,9 +15,10 @@ class MyHttpRequestHandler(http.server.SimpleHTTPRequestHandler):
             self.wfile.write(Page)
         elif self.path == '/api':
             response = '''
-Welcome to our demo API, here are the details of your request:
+{
+  "Hello-message": "Welcome to our demo API, here are the details of your request:
 Headers: 
-  {headers}
+{headers}
 Method: {method}
 '''.format(headers=self.headers.as_string(), method=self.command).encode()
             print(self.headers)
