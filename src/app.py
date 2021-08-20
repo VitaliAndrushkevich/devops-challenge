@@ -7,8 +7,7 @@ class IncorrectRequest(Exception):
 
 def get_method(event):
     try:
-        # method = event.get("requestContext").get("http").get("method")
-        method = event.get('httpMethod')
+        method = event.get("requestContext").get("http").get("method")
     except AttributeError:
         return "Not valid query format"
     if method in ("POST", "GET"):
