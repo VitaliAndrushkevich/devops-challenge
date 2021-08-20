@@ -32,7 +32,6 @@ jobs:
         run: |
           zip app.zip app.py
       - uses: actions/upload-artifact@master
-        working-directory: ./src
         with:
           name: archive
-          path: ./app.zip
+          path: src/app.zip
