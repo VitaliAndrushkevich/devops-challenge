@@ -67,7 +67,7 @@ jobs:
       - uses: actions/download-artifact@master
         with:
           name: archive
-          path: ./app.zip
+          path: ./
 
       - name: Move artifact to terraform dir
         run: mv ./app.zip ./terraform/app.zip
