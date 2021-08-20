@@ -1,6 +1,6 @@
 # Common variables
-project  = "devops-challenge"
-region   = "us-east-2"
+project = "devops-challenge"
+region  = "us-east-2"
 #lambda variables
 filename = "./app.zip"
 handler  = "app.lambda_handler"

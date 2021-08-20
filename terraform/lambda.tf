@@ -1,17 +1,17 @@
 resource "aws_lambda_function" "this" {
-   function_name = "${lower(var.project)}-lambda"
-   
-   filename = var.filename
-   handler = var.handler
-   runtime = var.runtime
+  function_name = "${lower(var.project)}-lambda"
 
-   role = aws_iam_role.lambda_role.arn
+  filename = var.filename
+  handler  = var.handler
+  runtime  = var.runtime
+
+  role = aws_iam_role.lambda_role.arn
 }
 
 resource "aws_iam_role" "lambda_role" {
-   name = "${lower(var.project)}-lambda-role"
+  name = "${lower(var.project)}-lambda-role"
 
-   assume_role_policy = <<EOF
+  assume_role_policy = <<EOF
 {
   "Version": "2012-10-17",
   "Statement": [
