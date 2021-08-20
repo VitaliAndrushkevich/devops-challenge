@@ -24,11 +24,13 @@ jobs:
         working-directory: ./src
         run: |
           python test.py
-      - uses: papeloto/action-zip@v1
+      - name: Zip installation
+        run: |
+          apt install zip -y
+      - name: Zip lambda artifact
         working-directory: ./src
-        with:
-          files: app.py
-          dest: app.zip
+        run: |
+          zip app.zip app.py
       - uses: actions/upload-artifact@master
         working-directory: ./src
         with:
