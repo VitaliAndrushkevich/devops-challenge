@@ -1,0 +1,35 @@
+name: Simple python application
+
+on:
+  push:
+    branches: [ main ]
+
+jobs:
+
+  check:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Set up Python 3.9
+      uses: actions/setup-python@v2
+      with:
+        python-version: 3.9
+    - name: Lint with flake8
+      working-directory: ./src
+      run: |
+        flake8 .
+    - name: Run unit test
+      working-directory: ./src
+      run: |
+        python test.py
+    - uses: papeloto/action-zip@v1
+      working-directory: ./src
+      with:
+        files: app.py
+        dest: app.zip
+    - uses: actions/upload-artifact@master
+      working-directory: ./src
+      with:
+        name: archive
+        path: ./app.zip
