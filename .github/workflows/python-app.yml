@@ -87,11 +87,8 @@ jobs:
       - name: Terraform Apply
         working-directory: ${{ env.WORK_DIR }}
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
-        run: terraform apply -auto-approve
-
-      - name: Store ENV variable
-        id: save_step
         run: |
+          terraform apply -auto-approve
           echo "::set-output name=endpoint::$(terraform output -raw base_url)/api"
 
   integration_test:
