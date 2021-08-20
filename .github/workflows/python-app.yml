@@ -53,7 +53,7 @@ jobs:
       WORK_DIR: "./terraform"
     
     outputs:
-      api_endpoint: ${{ steps.save_step.outputs.endpoint }}
+      api_endpoint: ${{ steps.apply_step.outputs.endpoint }}
 
     steps:
       - uses: actions/checkout@v2
@@ -86,6 +86,7 @@ jobs:
 
       - name: Terraform Apply
         working-directory: ${{ env.WORK_DIR }}
+        id: apply_step
         if: github.ref == 'refs/heads/main' && github.event_name == 'push'
         run: |
           terraform apply -auto-approve
