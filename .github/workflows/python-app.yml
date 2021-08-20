@@ -24,9 +24,9 @@ jobs:
         working-directory: ./src
         run: |
           python test.py
-      - name: Zip installation
-        run: |
-          apt install zip -y
+      # - name: Zip installation
+      #   run: |
+      #     apt install zip -y
       - name: Zip lambda artifact
         working-directory: ./src
         run: |
